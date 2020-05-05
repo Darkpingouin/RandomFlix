@@ -47,6 +47,32 @@ class RandomFlix:
     def get_categories(self):
         return self.array_cat
 
+    def process(self, categorie):
+        self.set_categories(categorie)
+        self.url_generator()
+        self.print_url()
+
+        req = requests.get(f.get_url())
+        soup = BeautifulSoup(req.content, 'html.parser')
+        movie_containers = soup.find_all('div', class_='card-body')
+        movies = []
+        first = True
+        seed()
+        value = randint(1, len(movie_containers))
+        # for movie in movie_containers:
+        #     print
+        #     if not first:
+        m = Movie()
+        m.parse_movie(movie_containers[value])
+        m.set_description(self.base_url)
+        m.set_image(self.base_url)
+        movies.append(m)
+        # else:
+        #     first = False
+
+        for movie in movies:
+            return movie
+
 
 
 class Movie:
@@ -59,7 +85,6 @@ class Movie:
     def parse_movie(self, html):
         self.title = html.h5.text
         self.link = html.a['href']
-        self.image = html.img['src']
 
     def set_description(self, url):
         req = requests.get(url + self.link)
@@ -67,31 +92,20 @@ class Movie:
         movie_containers = soup.find_all('div', class_='card card-plain information')
         self.description = movie_containers[0].p.text
 
+    def set_image(self, url):
+        req = requests.get(url + self.link)
+        soup = BeautifulSoup(req.content, 'html.parser')
+        movie_containers = soup.find_all('div', class_='card-header-image')
+        self.image = movie_containers[0].img['data-src']
+
     def to_string(self):
         return self.title + " -> " + self.description
 
+
+
+
 if __name__ == '__main__':
     f = RandomFlix()
-    f.set_categories('anime')
-    f.url_generator()
-    f.print_url()
-
-    req = requests.get(f.get_url())
-    soup = BeautifulSoup(req.content, 'html.parser')
-    movie_containers = soup.find_all('div', class_='card-body')
-    movies = []
-    first = True
-    seed()
-    value = randint(1, len(movie_containers))
-    # for movie in movie_containers:
-    #     print
-    #     if not first:
-    m = Movie()
-    m.parse_movie(movie_containers[value])
-    m.set_description(f.base_url)
-    movies.append(m)
-    # else:
-    #     first = False
-
-    for movie in movies:
-        print(movie.to_string())
+    s = f.process('anime')
+    print(s.to_string())
+    print(s.image)
