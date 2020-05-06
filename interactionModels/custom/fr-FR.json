@@ -1,0 +1,274 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "lance randomflix",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": [
+            "Annuler"
+          ]
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": [
+            "Que fait-tu",
+            "Comment faire",
+            "Aide"
+          ]
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": [
+            "Arreter",
+            "Stop"
+          ]
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": [
+            "quitter",
+            "Retour"
+          ]
+        },
+        {
+          "name": "FilmTypeIntent",
+          "slots": [
+            {
+              "name": "categorie",
+              "type": "categories"
+            }
+          ],
+          "samples": [
+            "une {categorie}",
+            "un {categorie}",
+            "donne moi un film {categorie}",
+            "{categorie}",
+            "film d\u0027 {categorie}",
+            "film de type {categorie}",
+            "lance un film de {categorie}"
+          ]
+        }
+      ],
+      "types": [
+        {
+          "values": [
+            {
+              "id": "thriller",
+              "name": {
+                "value": "thriller",
+                "synonyms": [
+                  "thrillers"
+                ]
+              }
+            },
+            {
+              "id": "stand_up",
+              "name": {
+                "value": "stand up",
+                "synonyms": [
+                  "humour"
+                ]
+              }
+            },
+            {
+              "id": "SF",
+              "name": {
+                "value": "science-fiction et fantastique",
+                "synonyms": [
+                  "fantastique",
+                  "SF",
+                  "science-fiction"
+                ]
+              }
+            },
+            {
+              "id": "romance",
+              "name": {
+                "value": "romance",
+                "synonyms": [
+                  "romantique",
+                  "romances"
+                ]
+              }
+            },
+            {
+              "id": "primés",
+              "name": {
+                "value": "primés",
+                "synonyms": [
+                  "primé"
+                ]
+              }
+            },
+            {
+              "id": "policier",
+              "name": {
+                "value": "policier",
+                "synonyms": [
+                  "policiers"
+                ]
+              }
+            },
+            {
+              "id": "comédies_musicales",
+              "name": {
+                "value": "comédies musicales",
+                "synonyms": [
+                  "musical",
+                  "comédie musicale"
+                ]
+              }
+            },
+            {
+              "id": "jeunesse",
+              "name": {
+                "value": "jeunesse",
+                "synonyms": [
+                  "familial",
+                  "pour enfant"
+                ]
+              }
+            },
+            {
+              "id": "international",
+              "name": {
+                "value": "international",
+                "synonyms": [
+                  "étrangers",
+                  "étranger",
+                  "etranger",
+                  "etrangers"
+                ]
+              }
+            },
+            {
+              "id": "indépendant",
+              "name": {
+                "value": "indépendant",
+                "synonyms": [
+                  "indépendants"
+                ]
+              }
+            },
+            {
+              "id": "horreur",
+              "name": {
+                "value": "horreur",
+                "synonyms": [
+                  "qui fait peur",
+                  "horreurs"
+                ]
+              }
+            },
+            {
+              "id": "français",
+              "name": {
+                "value": "français"
+              }
+            },
+            {
+              "id": "drame",
+              "name": {
+                "value": "drame",
+                "synonyms": [
+                  "drama"
+                ]
+              }
+            },
+            {
+              "id": "documentaire",
+              "name": {
+                "value": "documentaire",
+                "synonyms": [
+                  "documentaires"
+                ]
+              }
+            },
+            {
+              "id": "comédie",
+              "name": {
+                "value": "comédie",
+                "synonyms": [
+                  "comique",
+                  "comédies"
+                ]
+              }
+            },
+            {
+              "id": "anime",
+              "name": {
+                "value": "anime",
+                "synonyms": [
+                  "animés",
+                  "dessin animé",
+                  "japonnais",
+                  "animé"
+                ]
+              }
+            },
+            {
+              "id": "action",
+              "name": {
+                "value": "action",
+                "synonyms": [
+                  "actions",
+                  "action"
+                ]
+              }
+            }
+          ],
+          "name": "categories"
+        }
+      ]
+    },
+    "dialog": {
+      "intents": [
+        {
+          "name": "FilmTypeIntent",
+          "confirmationRequired": false,
+          "prompts": {},
+          "slots": [
+            {
+              "name": "categorie",
+              "type": "categories",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.37837807522.895030193845"
+              },
+              "validations": [
+                {
+                  "type": "hasEntityResolutionMatch",
+                  "prompt": "Slot.Validation.1491218935335.324608062935.415460284605"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "delegationStrategy": "ALWAYS"
+    },
+    "prompts": [
+      {
+        "id": "Elicit.Slot.37837807522.895030193845",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Veuillez donner une catégorie valide"
+          }
+        ]
+      },
+      {
+        "id": "Slot.Validation.1491218935335.324608062935.415460284605",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Cette categorie n\u0027existe pas. Merci de re-essayer"
+          }
+        ]
+      }
+    ]
+  },
+  "version": "14"
+}
