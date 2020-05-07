@@ -3,7 +3,7 @@
 
 _Random Netflix movie chooser - Alexa Skill_
 
-:question: RandomFlix est une skill alexa (bientôt disponible sur le store) basée sur les données de [Flixable FR](https://fr.flixable.com/)
+:question: RandomFlix est une skill alexa dispo [ici](https://www.amazon.fr/dp/B0888TDHDR/ref=sr_1_1?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&dchild=1&keywords=randomflix&qid=1588863961&s=digital-skills&sr=1-1) basée sur les données de [Flixable FR](https://fr.flixable.com/)
 
 :clipboard: Le fichier [RandomFlix.py](https://github.com/Darkpingouin/RandomFlix/blob/master/lambda/RandomFlix.py) contient la classe movie et randomflix qui permettent de parser le site et de chercher un film au hasard parmi les catégories disponibles.
 
