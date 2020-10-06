@@ -1,4 +1,4 @@
-boto3==1.15.10
+boto3==1.15.12
 ask-sdk-core==1.14.0
 datetime
 bs4
