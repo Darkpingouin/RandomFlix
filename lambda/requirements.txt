@@ -1,5 +1,5 @@
 boto3==1.16.3
-ask-sdk-core==1.14.0
+ask-sdk-core==1.15.0
 datetime
 bs4
 request
